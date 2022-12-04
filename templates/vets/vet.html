@@ -6,4 +6,7 @@
     <p>{{ vet.name }}</p>
     <h4>Emergency contact:</h4>
     <p>{{ vet.emergency_contact }}</p>
+    <form action="/vets/{{ vet.id }}/delete/" method="post">
+        <input type="submit" value="Delete vet"/>
+    </form>
 {% endblock %}

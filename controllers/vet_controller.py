@@ -17,3 +17,16 @@ def display_vet(id):
 @vets_blueprint.route("/vets/new_vet/")
 def new_vet():
     return render_template('/vets/new_vet.html')
+
+@vets_blueprint.route("/vets/new_vet/", methods=["POST"])
+def create_vet():
+    name = request.form['name']
+    emergency_contact = request.form["emergency_contact"]
+    new_vet = Vet(name, emergency_contact)
+    vet_repository.save(new_vet)
+    return redirect("/")
+
+@vets_blueprint.route('/vets/<id>/delete/', methods=["POST"])
+def delete_vet(id):
+    vet_repository.delete(id)
+    return redirect("/")
