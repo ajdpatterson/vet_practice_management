@@ -6,10 +6,19 @@
     <p>{{ vet.name }}</p>
     <h4>Emergency contact:</h4>
     <p>{{ vet.emergency_contact }}</p>
-    <form action="/vets/{{ vet.id }}/delete/" method="post">
-        <input type="submit" value="Delete vet"/>
-    </form>
-    <form action="/vets/{{ vet.id }}/edit/">
-        <input type="submit" value="Edit vet"/>
-    </form>
+    <div id="vet actions">
+        <form action="/vets/{{ vet.id }}/delete/" method="post">
+            <input type="submit" value="Delete vet"/>
+        </form>
+        <form action="/vets/{{ vet.id }}/edit/">
+            <input type="submit" value="Edit vet"/>
+        </form>
+    </div>
+    <h3>Registered owners:</h3>
+    <ul>
+        {% for owner in registered_owners %}
+            <h4>Owner name:</h4>
+            <p>{{ owner.name }}</p>
+        {% endfor %}
+    </ul>
 {% endblock %}

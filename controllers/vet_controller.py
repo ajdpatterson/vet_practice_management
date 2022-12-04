@@ -12,7 +12,8 @@ def vets():
 @vets_blueprint.route("/vets/<id>/display")
 def display_vet(id):
     vet = vet_repository.select(id)
-    return render_template('/vets/vet.html', vet=vet)
+    registered_owners = vet_repository.show_registered_owners(id)
+    return render_template('/vets/vet.html', vet=vet, registered_owners=registered_owners)
 
 @vets_blueprint.route("/vets/new_vet/")
 def new_vet():

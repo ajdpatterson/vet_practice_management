@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.vet import Vet
+from models.owner import Owner
 
 def save(vet):
     sql = "INSERT INTO vets(name, emergency_contact) VALUES ( %s, %s ) RETURNING id"
@@ -41,3 +42,13 @@ def update(vet):
     values = [vet.name, vet.emergency_contact, vet.id]
     run_sql(sql, values)
 
+def show_registered_owners(vet):
+    registered_owners = []
+    
+    sql = "SELECT * FROM owners WHERE vet_id = %s"
+    values = [vet]
+    results = run_sql(sql, values)
+    for row in results:
+        owner = Owner(row['name'], row['dob'], row['phone'], row['address'], row['vet_id'], row['id'])
+        registered_owners.append(owner)
+    return registered_owners
