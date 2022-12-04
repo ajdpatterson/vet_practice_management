@@ -14,6 +14,6 @@ def display_vet(id):
     vet = vet_repository.select(id)
     return render_template('/vets/vet.html', vet=vet)
 
-@vets_blueprint.route("/vets/new_vet")
+@vets_blueprint.route("/vets/new_vet/")
 def new_vet():
     return render_template('/vets/new_vet.html')
