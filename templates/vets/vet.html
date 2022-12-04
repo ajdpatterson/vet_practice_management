@@ -9,4 +9,7 @@
     <form action="/vets/{{ vet.id }}/delete/" method="post">
         <input type="submit" value="Delete vet"/>
     </form>
+    <form action="/vets/{{ vet.id }}/edit/">
+        <input type="submit" value="Edit vet"/>
+    </form>
 {% endblock %}

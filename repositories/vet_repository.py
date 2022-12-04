@@ -36,3 +36,8 @@ def select(id):
         vet = Vet(result['name'], result['emergency_contact'], result['id'])
     return vet
 
+def update(vet):
+    sql = "UPDATE vets SET (name, emergency_contact) = (%s, %s) WHERE id = %s"
+    values = [vet.name, vet.emergency_contact, vet.id]
+    run_sql(sql, values)
+
