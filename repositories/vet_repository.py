@@ -42,11 +42,11 @@ def update(vet):
     values = [vet.name, vet.emergency_contact, vet.id]
     run_sql(sql, values)
 
-def show_registered_owners(vet):
+def show_registered_owners(vet_id):
     registered_owners = []
     
     sql = "SELECT * FROM owners WHERE vet_id = %s"
-    values = [vet]
+    values = [vet_id]
     results = run_sql(sql, values)
     for row in results:
         owner = Owner(row['name'], row['dob'], row['phone'], row['address'], row['vet_id'], row['id'])
