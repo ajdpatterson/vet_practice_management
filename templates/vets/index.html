@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Vet Roster</h2>
+    <ul>
+        {% for vet in vets %}
+            <li>
+                <a href="/vets/{{ vet.id }}/display">{{ vet.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <form action="/vets/new_vet/">
+        <input type="submit" value="New vet"/>
+    </form>
+{% endblock %}
